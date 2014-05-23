@@ -2,7 +2,7 @@ require 'faker'
 require 'pp'
 require 'csv'
 
-def people
+def generate_people
   people = []
   i = 0
   while i < 350
@@ -12,7 +12,7 @@ def people
   people
 end
 
-def companies
+def generate_companies
   companies = []
   i = 0
   while i < 27
@@ -22,8 +22,10 @@ def companies
   companies
 end
 
-def employment
+def generate_employment
   employment = []
+  people = generate_people
+  companies = generate_companies
   i = 0
   people.each do |person|
     employment << person + companies[i]
@@ -37,11 +39,12 @@ end
 
 def generate
 CSV.open("data/company.csv", "wb") do |csv|
-  employment.each do |emp|
+  generate_employment.each do |emp|
     csv << emp
   end
 end
 end
 
+generate
 
 # Look at the CSV docs http://ruby-doc.org/stdlib-2.1.1/libdoc/csv/rdoc/CSV.html

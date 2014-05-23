@@ -10,15 +10,15 @@ before :all do
 end
 
   it 'should return an array of 350 people' do
-    expect(people.length).to eq 350
+    expect(generate_people.length).to eq 350
   end
 
   it 'should return an array of 27 companies' do
-    expect(companies.length).to eq 27
+    expect(generate_companies.length).to eq 27
   end
 
   it 'should return an employment array of first name, last name, and company name' do
-    expect(employment.first.length).to eq 3
+    expect(generate_employment.first.length).to eq 3
   end
 
   it 'should create a company.csv file' do
